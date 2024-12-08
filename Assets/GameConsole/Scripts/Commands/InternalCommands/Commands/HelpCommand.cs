@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
-namespace GameConsole
+namespace GameConsole.Commands
 {
-    internal class HelpCommand : ConsoleCommand
+    internal class HelpCommand : SimpleCommand
     {
         private readonly ConsoleCommands _consoleCommands;
 
@@ -15,16 +14,21 @@ namespace GameConsole
             _consoleCommands = consoleCommands;
         }
 
-        protected override string Invoke(List<string> arguments)
+        protected override string Invoke()
         {
             if (_consoleCommands == null) return null;
 
             var sb = new StringBuilder();
 
-            foreach (var command in _consoleCommands.Commands)
+
+            for (var index = 0; index < _consoleCommands.Commands.Count; index++)
             {
-                sb.Append($"/{command.Word} \n");
+                var command = _consoleCommands.Commands[index];
+                sb.Append($"/{command.Word}");
+                bool isLast = index == _consoleCommands.Commands.Count - 1;
+                if (!isLast) sb.Append("\n");
             }
+
 
             return sb.ToString();
         }

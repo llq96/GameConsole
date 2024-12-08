@@ -4,7 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-namespace GameConsole
+namespace GameConsole.Commands
 {
     public class CommandInfo : MonoBehaviour
     {
@@ -19,10 +19,9 @@ namespace GameConsole
 
         [Header("Colors")]
         [SerializeField] private Color _color_commandWord;
-        [SerializeField] private Color _color_commandParameter;
+        [SerializeField] private Color _color_commandArgument;
 
-
-        private ConsoleCommand _currentCommand;
+        private BaseCommand _currentCommand;
 
         private void Awake()
         {
@@ -42,7 +41,7 @@ namespace GameConsole
             }
         }
 
-        private ConsoleCommand GetSuitableCommand(string input)
+        private BaseCommand GetSuitableCommand(string input)
         {
             if (string.IsNullOrEmpty(input)) return null;
             if (input == "/") return null;
@@ -53,14 +52,14 @@ namespace GameConsole
             return possibleCommand;
         }
 
-        private string GetInfo(ConsoleCommand command)
+        private string GetInfo(BaseCommand command)
         {
             StringBuilder sb = new();
             sb.Append($"/{command.Word}".WithColor(_color_commandWord));
 
-            foreach (var parameter in command.Parameters)
+            foreach (var argument in command.Arguments)
             {
-                sb.Append($" ({parameter})".WithColor(_color_commandParameter));
+                sb.Append($" ({argument})".WithColor(_color_commandArgument));
             }
 
             return sb.ToString();

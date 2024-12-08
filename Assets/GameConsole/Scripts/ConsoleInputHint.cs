@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using GameConsole.Commands;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace GameConsole
         [SerializeField] private TMP_InputField _inputField;
         [SerializeField] private TextMeshProUGUI _tmp_commandHint;
 
-        private ConsoleCommand _currentHintCommand;
+        private BaseCommand _currentHintCommand;
 
         private void Awake()
         {
@@ -46,7 +47,7 @@ namespace GameConsole
             }
         }
 
-        private ConsoleCommand GetCommandHint(string input)
+        private BaseCommand GetCommandHint(string input)
         {
             if (string.IsNullOrEmpty(input)) return null;
             if (input == "/") return null;

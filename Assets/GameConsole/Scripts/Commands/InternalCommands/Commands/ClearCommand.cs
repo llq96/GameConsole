@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace GameConsole
+﻿namespace GameConsole.Commands
 {
-    internal class ClearCommand : ConsoleCommand
+    internal class ClearCommand : SimpleCommand
     {
         private readonly ConsoleOutput _consoleOutput;
 
@@ -16,7 +14,7 @@ namespace GameConsole
             _consoleOutput = consoleOutput;
         }
 
-        protected override string Invoke(List<string> arguments)
+        protected override string Invoke()
         {
             if (_consoleOutput != null)
             {

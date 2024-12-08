@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace GameConsole
+﻿namespace GameConsole.Commands
 {
-    internal class ExitCommand : ConsoleCommand
+    internal class ExitCommand : SimpleCommand
     {
         public override string Word => "Exit";
         public override string Description => "Stop playmode in editor";
 
-        protected override string Invoke(List<string> arguments)
+        protected override string Invoke()
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

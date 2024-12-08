@@ -21,7 +21,7 @@ namespace GameConsole
             return new CommandInvokeResult(Result.Success, input, output);
         }
 
-        public static CommandInvokeResult MatchError(string input, string output = "Wrong Parameters")
+        public static CommandInvokeResult MatchError(string input, string output = "Wrong Arguments")
         {
             return new CommandInvokeResult(Result.MatchError, input, output);
         }

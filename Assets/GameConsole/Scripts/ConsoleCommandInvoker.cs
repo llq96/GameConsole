@@ -32,7 +32,7 @@ namespace GameConsole
             }
             else
             {
-                _consoleOutput.AddErrorText(input, "Wrong Command");
+                _consoleOutput.AddErrorText(input, "Unknown Command");
             }
         }
 

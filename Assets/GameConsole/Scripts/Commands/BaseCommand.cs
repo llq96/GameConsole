@@ -4,28 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace GameConsole
+namespace GameConsole.Commands
 {
-    public abstract class ConsoleCommand
+    public abstract class BaseCommand
     {
         public abstract string Word { get; }
-        public string[] Parameters { get; }
+        public string[] Arguments { get; }
         public virtual string Description => "";
 
         private readonly Regex _regex;
 
-        protected ConsoleCommand(params string[] parameters)
+        protected BaseCommand(params string[] arguments)
         {
-            Parameters = parameters;
+            Arguments = arguments;
 
-            _regex = CreateRegex(Word, parameters.Length);
+            _regex = CreateRegex(Word, arguments.Length);
         }
 
-        private static Regex CreateRegex(string word, int countParameters = 0)
+        private static Regex CreateRegex(string word, int countArguments = 0)
         {
             StringBuilder sb = new();
             sb.Append($"^/{word}");
-            for (int i = 0; i < countParameters; i++)
+            for (int i = 0; i < countArguments; i++)
             {
                 sb.Append(" (\\S+)");
             }

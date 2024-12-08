@@ -1599,7 +1599,7 @@ MonoBehaviour:
   _tmp_commandInfo: {fileID: 730694639}
   _tmp_commandDescription: {fileID: 483724324}
   _color_commandWord: {r: 0.41960785, g: 0.87058824, b: 0.5137255, a: 0.8}
-  _color_commandParameter: {r: 0.82500434, g: 0.87058824, b: 0.41960785, a: 0.8}
+  _color_commandArgument: {r: 0.8235294, g: 0.87058824, b: 0.41960785, a: 0.8}
 --- !u!114 &689714343
 MonoBehaviour:
   m_ObjectHideFlags: 0
