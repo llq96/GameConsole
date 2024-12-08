@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameConsole
@@ -20,5 +21,6 @@ namespace GameConsole
         }
 
         public void AddCommand(ConsoleCommand command) => ConsoleCommands.AddCommand(command);
+        public void AddCommands(IEnumerable<ConsoleCommand> commands) => ConsoleCommands.AddCommands(commands);
     }
 }

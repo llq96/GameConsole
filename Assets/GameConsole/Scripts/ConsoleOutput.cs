@@ -22,7 +22,7 @@ namespace GameConsole
 
         private void AddText(Color colorInput, Color colorOutput, string input, string output = null)
         {
-            if (!string.IsNullOrEmpty(output))
+            if (!string.IsNullOrEmpty(input))
             {
                 input = input.WithColor(colorInput);
                 _tmp_commands.text += input + '\n';

@@ -23,6 +23,9 @@ namespace GameConsole
 
         private void InvokeCommandHandler(string input)
         {
+            var last = _history.LastOrDefault();
+            if (last != null && last == input) return;
+
             _history.Add(input);
             _lastHistoryIndex = null;
             SaveHistoryToPlayerPrefs();
@@ -48,6 +51,13 @@ namespace GameConsole
             return false;
         }
 
+        #region Save/Load
+
+        private void SaveHistoryToPlayerPrefs()
+        {
+            PlayerPrefs.SetString(ConsoleHistoryPlayerPrefsKey, string.Join("\n", _history));
+        }
+
         private void LoadHistoryFromPlayerPrefs()
         {
             if (PlayerPrefs.HasKey(ConsoleHistoryPlayerPrefsKey))
@@ -61,9 +71,6 @@ namespace GameConsole
             }
         }
 
-        private void SaveHistoryToPlayerPrefs()
-        {
-            PlayerPrefs.SetString(ConsoleHistoryPlayerPrefsKey, string.Join("\n", _history));
-        }
+        #endregion
     }
 }

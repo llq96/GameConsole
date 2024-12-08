@@ -23,11 +23,11 @@ namespace GameConsole
                 var invokeResult = command.Invoke(input);
                 if (invokeResult.Result == Result.Success)
                 {
-                    _consoleOutput.AddNormalText(input, invokeResult.Output);
+                    _consoleOutput.AddNormalText(invokeResult.Input, invokeResult.Output);
                 }
                 else
                 {
-                    _consoleOutput.AddErrorText(input, invokeResult.Output);
+                    _consoleOutput.AddErrorText(invokeResult.Input, invokeResult.Output);
                 }
             }
             else
