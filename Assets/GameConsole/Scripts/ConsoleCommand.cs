@@ -8,13 +8,17 @@ namespace GameConsole
 {
     public abstract class ConsoleCommand
     {
-        private readonly Regex _regex;
         public string Word { get; }
+        public string[] Parameters { get; }
 
-        protected ConsoleCommand(string word, int countParameters = 0)
+        private readonly Regex _regex;
+
+        protected ConsoleCommand(string word, params string[] parameters)
         {
             Word = word;
-            _regex = CreateRegex(word, countParameters);
+            Parameters = parameters;
+
+            _regex = CreateRegex(word, parameters.Length);
         }
 
         private static Regex CreateRegex(string word, int countParameters = 0)
@@ -23,11 +27,11 @@ namespace GameConsole
             sb.Append($"^/{word}");
             for (int i = 0; i < countParameters; i++)
             {
-                sb.Append(" (\\w+)");
+                sb.Append(" (\\S+)");
             }
 
             sb.Append("$");
-            return new Regex(sb.ToString());
+            return new Regex(sb.ToString() , RegexOptions.IgnoreCase);
         }
 
         public bool IsMatch(string input) => _regex.Match(input).Success;

@@ -11,6 +11,7 @@ namespace GameConsole
             _commands.Add(new ClearCommand(console.ConsoleOutput));
             _commands.Add(new HelpCommand(console.ConsoleCommands));
             _commands.Add(new ExitCommand());
+            _commands.Add(new TimeScaleCommand());
         }
 
         public List<ConsoleCommand> GetCommands() => _commands;

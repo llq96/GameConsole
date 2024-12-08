@@ -69,7 +69,10 @@ namespace GameConsole
             if (_currentHintCommand != null)
             {
                 _tmp_commandHint.gameObject.SetActive(true);
-                _tmp_commandHint.text = $"/{_currentHintCommand.Word}";
+                var hintText = $"/{_currentHintCommand.Word}";
+                hintText = hintText.Substring(input.Length);
+                // Debug.Log($"{input} AND {hintText}");
+                _tmp_commandHint.text = input + hintText;
             }
             else
             {
