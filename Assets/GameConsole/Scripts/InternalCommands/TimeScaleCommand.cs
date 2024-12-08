@@ -6,7 +6,10 @@ namespace GameConsole
 {
     internal class TimeScaleCommand : ConsoleCommand
     {
-        public TimeScaleCommand() : base("TimeScale", "Scale")
+        public override string Word => "TimeScale";
+        public override string Description => "Change TimeScale";
+
+        public TimeScaleCommand() : base("Scale")
         {
         }
 

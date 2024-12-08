@@ -6,9 +6,12 @@ namespace GameConsole
     {
         private readonly ConsoleOutput _consoleOutput;
 
+        public override string Word => "Clear";
+        public override string Description => "Clear console output";
+
         protected override string OverridedInput => string.Empty;
 
-        public ClearCommand(ConsoleOutput consoleOutput) : base("Clear")
+        public ClearCommand(ConsoleOutput consoleOutput)
         {
             _consoleOutput = consoleOutput;
         }

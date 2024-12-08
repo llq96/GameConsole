@@ -4,9 +4,8 @@ namespace GameConsole
 {
     internal class ExitCommand : ConsoleCommand
     {
-        public ExitCommand() : base("Exit")
-        {
-        }
+        public override string Word => "Exit";
+        public override string Description => "Stop playmode in editor";
 
         protected override string Invoke(List<string> arguments)
         {

@@ -7,7 +7,10 @@ namespace GameConsole
     {
         private readonly ConsoleCommands _consoleCommands;
 
-        public HelpCommand(ConsoleCommands consoleCommands) : base("Help")
+        public override string Word => "Help";
+        public override string Description => "Show commands list";
+
+        public HelpCommand(ConsoleCommands consoleCommands)
         {
             _consoleCommands = consoleCommands;
         }

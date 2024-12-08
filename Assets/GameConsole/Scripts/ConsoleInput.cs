@@ -10,13 +10,11 @@ namespace GameConsole
     public class ConsoleInput : MonoBehaviour
     {
         [Header("Console Components")]
-        [SerializeField] private ConsoleCommands _consoleCommands;
         [SerializeField] private ConsoleCommandInvoker _consoleCommandInvoker;
         [SerializeField] private ConsoleHistory _consoleHistory;
 
         [Header("UI Components")]
         [SerializeField] private TMP_InputField _inputField;
-        [SerializeField] private TextMeshProUGUI _tmp_commandHint;
         [SerializeField] private TextMeshProUGUI _tmp_input;
         [Space]
         [SerializeField] private Button _button_do;
@@ -30,13 +28,10 @@ namespace GameConsole
         [SerializeField] private Color _buttonImageColor_wrong;
 
 
-        private ConsoleCommand _currentHintCommand;
-
-
         private void Awake()
         {
             _inputField.onEndEdit.AddListener(TryDoCommand);
-            _inputField.onValueChanged.AddListener(UpdateHint);
+
             _inputField.onValueChanged.AddListener(UpdateUIAfterDelay);
             _button_do.onClick.AddListener(InvokeCommand);
 
@@ -63,39 +58,8 @@ namespace GameConsole
         }
 
 
-        private void UpdateHint(string input)
-        {
-            _currentHintCommand = GetCommandHint(input);
-            if (_currentHintCommand != null)
-            {
-                _tmp_commandHint.gameObject.SetActive(true);
-                var hintText = $"/{_currentHintCommand.Word}";
-                hintText = hintText.Substring(input.Length);
-                // Debug.Log($"{input} AND {hintText}");
-                _tmp_commandHint.text = input + hintText;
-            }
-            else
-            {
-                _tmp_commandHint.gameObject.SetActive(false);
-            }
-        }
-
-        private ConsoleCommand GetCommandHint(string text)
-        {
-            if (string.IsNullOrEmpty(text)) return null;
-            if (text == "/") return null;
-            return _consoleCommands.Commands
-                .FirstOrDefault(x => $"/{x.Word}".StartsWith(text, StringComparison.InvariantCultureIgnoreCase));
-        }
-
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab) && _inputField.isFocused && _currentHintCommand != null)
-            {
-                _inputField.text = $"/{_currentHintCommand.Word}";
-                _inputField.caretPosition = _inputField.text.Length;
-            }
-
             if (Input.GetKeyDown(KeyCode.UpArrow) && _inputField.isFocused)
             {
                 if (_consoleHistory.TryGetPreviousCommand(out var input))

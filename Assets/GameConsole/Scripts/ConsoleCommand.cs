@@ -8,17 +8,17 @@ namespace GameConsole
 {
     public abstract class ConsoleCommand
     {
-        public string Word { get; }
+        public abstract string Word { get; }
         public string[] Parameters { get; }
+        public virtual string Description => "";
 
         private readonly Regex _regex;
 
-        protected ConsoleCommand(string word, params string[] parameters)
+        protected ConsoleCommand(params string[] parameters)
         {
-            Word = word;
             Parameters = parameters;
 
-            _regex = CreateRegex(word, parameters.Length);
+            _regex = CreateRegex(Word, parameters.Length);
         }
 
         private static Regex CreateRegex(string word, int countParameters = 0)
@@ -31,7 +31,7 @@ namespace GameConsole
             }
 
             sb.Append("$");
-            return new Regex(sb.ToString() , RegexOptions.IgnoreCase);
+            return new Regex(sb.ToString(), RegexOptions.IgnoreCase);
         }
 
         public bool IsMatch(string input) => _regex.Match(input).Success;
@@ -57,7 +57,6 @@ namespace GameConsole
 
         protected abstract string Invoke(List<string> arguments);
 
-        public override string ToString() => _regex.ToString();
         protected virtual string OverridedInput => null;
     }
 }
