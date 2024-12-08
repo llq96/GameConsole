@@ -14,7 +14,7 @@ namespace GameConsole.Commands
 
         private readonly Regex _regex;
 
-        protected BaseCommand(params string[] arguments)
+        internal BaseCommand(params string[] arguments)
         {
             Arguments = arguments;
 

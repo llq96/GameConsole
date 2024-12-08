@@ -6,7 +6,7 @@ namespace GameConsole.Commands
 {
     public abstract class GenericCommand : BaseCommand
     {
-        protected GenericCommand(params string[] arguments) : base(arguments)
+        internal GenericCommand(params string[] arguments) : base(arguments)
         {
         }
 
