@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public class ConsoleOutput : MonoBehaviour
     {

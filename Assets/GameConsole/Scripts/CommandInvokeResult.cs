@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public class CommandInvokeResult
     {
@@ -15,7 +15,6 @@ namespace ConsoleSystem
             Input = input;
             Output = output;
         }
-
 
         public static CommandInvokeResult Success(string input, string output)
         {

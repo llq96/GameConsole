@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public class Console : MonoBehaviour
     {

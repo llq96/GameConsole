@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public class ConsoleCommands : MonoBehaviour
     {

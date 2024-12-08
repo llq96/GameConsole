@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     internal class ExitCommand : ConsoleCommand
     {

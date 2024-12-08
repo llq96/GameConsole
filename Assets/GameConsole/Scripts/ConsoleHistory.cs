@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public class ConsoleHistory : MonoBehaviour
     {
-        private string ConsoleHistoryPlayerPrefsKey = "ConsoleHistoryPlayerPrefsKey";
+        private const string ConsoleHistoryPlayerPrefsKey = "ConsoleHistoryPlayerPrefsKey";
 
         [Header("Console Components")]
         [SerializeField] private ConsoleCommandInvoker _consoleCommandInvoker;

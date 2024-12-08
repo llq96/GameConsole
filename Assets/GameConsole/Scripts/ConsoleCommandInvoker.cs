@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public class ConsoleCommandInvoker : MonoBehaviour
     {

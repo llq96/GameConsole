@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ConsoleSystem
+namespace GameConsole
 {
     public static class Extensions
     {
